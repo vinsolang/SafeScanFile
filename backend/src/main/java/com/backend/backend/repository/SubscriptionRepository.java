@@ -16,6 +16,8 @@ import java.util.Optional;
 
 public interface SubscriptionRepository extends JpaRepository<Subscription, Long> {
 
+    List<Subscription> findByUserId(Long userId);
+    long countByStatus(SubscriptionStatus status);
     /**
      * Row lock used when debiting/refunding credits, so two concurrent scans
      * for the same user can't both spend the same credit. Combined with the
